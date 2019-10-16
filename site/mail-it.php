@@ -3,15 +3,19 @@
 /* Code by David McKeown - craftedbydavid.com */
 /* Editable entries are bellow */
 
-$send_to = "mail@server.com";
-$send_subject = "Ajax form ";
+$send_to = "bpareso@flexography.org";
+$send_subject = "AllThingsFirst.org Contact Form";
 
 
 
 /*Be careful when editing below this line */
 
 $f_name = cleanupentries($_POST["name"]);
+$f_lastname = cleanupentries($_POST["lastname"]);
 $f_email = cleanupentries($_POST["email"]);
+$f_phone = cleanupentries($_POST["phone"]);
+$f_coname = cleanupentries($_POST["coname"]);
+$f_address = cleanupentries($_POST["address"]);
 $f_message = cleanupentries($_POST["message"]);
 $from_ip = $_SERVER['REMOTE_ADDR'];
 $from_browser = $_SERVER['HTTP_USER_AGENT'];
@@ -24,10 +28,15 @@ function cleanupentries($entry) {
 	return $entry;
 }
 
-$message = "This email was submitted on " . date('m-d-Y') . 
-"\n\nName: " . $f_name . 
-"\n\nE-Mail: " . $f_email . 
-"\n\nMessage: \n" . $f_message . 
+$message = "This email was submitted on " . date('m-d-Y') .
+"\n\nFirst-Name: " . $f_name .
+"\n\nLast-Name: " . $f_lastname .
+"\n\nE-Mail: " . $f_email .
+"\n\nPhone: " . $f_phone .
+"\n\nCompany-Name: " . $f_coname .
+"\n\nCompany-Address: " . $f_address .
+"\n\nMember: " . $f_member .
+"\n\nMessage: \n" . $f_message .
 "\n\n\nTechnical Details:\n" . $from_ip . "\n" . $from_browser;
 
 $send_subject .= " - {$f_name}";
